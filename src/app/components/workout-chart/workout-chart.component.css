@@ -1,0 +1,53 @@
+.workout-chart-container {
+  display: flex;
+  height: 100%;
+  min-height: 400px;
+}
+
+.user-list {
+  width: 200px;
+  padding: 20px;
+  border-right: 1px solid #ccc;
+  overflow-y: auto;
+}
+
+.user-list h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.user-list ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user-list li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.user-list li:hover {
+  background-color: #f0f0f0;
+}
+
+.user-list li.active {
+  background-color: #e0e0e0;
+  font-weight: bold;
+}
+
+.chart-container {
+  flex-grow: 1;
+  padding: 20px;
+  position: relative;
+}
+
+.no-user-selected {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #888;
+}

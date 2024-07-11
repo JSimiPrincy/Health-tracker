@@ -1,0 +1,17 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput placeholder="User Name" formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Workout Type" formControlName="workoutType">
+        <mat-option *ngFor="let type of workoutTypes" [value]="type">
+          {{type}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" placeholder="Minutes" formControlName="minutes">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!userForm.valid">Add Workout</button>
+  </form>
+  

@@ -1,0 +1,36 @@
+<div class="user-list-container">
+  <mat-form-field class="filter-field">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search by name or workout type">
+  </mat-form-field>
+
+  <div class="workout-type-filters">
+    <button mat-stroked-button color="primary" (click)="applyFilter('')">All</button>
+    <button mat-stroked-button *ngFor="let type of workoutTypes" (click)="applyFilter(type)">
+      {{type}}
+    </button>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let user"> {{user.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="workouts">
+      <th mat-header-cell *matHeaderCellDef> Workouts </th>
+      <td mat-cell *matCellDef="let user">
+        <div *ngFor="let workout of user.workouts" class="workout-item">
+          <span class="workout-type">{{workout.type}}</span>: {{workout.minutes}} minutes
+        </div>
+        <div class="total-minutes">
+          Total: {{getTotalMinutes(user.workouts)}} minutes
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>
